@@ -14,6 +14,7 @@ class StringSchemaTest {
     private static final int TEN = 10;
     private static final int FOUR = 4;
     private static final int TWO = 2;
+    private static final int MINUS_FIVE = -5;
 
     @BeforeEach
     void init() {
@@ -44,7 +45,7 @@ class StringSchemaTest {
         assertTrue(schema.isValid(VALUE_1));
         assertTrue(schema.isValid(VALUE_2));
 
-        assertThrows(IllegalArgumentException.class, () -> schema.minLength(-5));
+        assertThrows(IllegalArgumentException.class, () -> schema.minLength(MINUS_FIVE));
     }
 
     @Test

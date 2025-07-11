@@ -12,10 +12,6 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     public StringSchema minLength(int length) {
-        if (length < 0) {
-            throw new IllegalArgumentException("Minimal length cannot be negative");
-        }
-
         rules.removeIf(rule -> rule instanceof MinLengthRule);
         rules.add(new MinLengthRule(length));
         return this;

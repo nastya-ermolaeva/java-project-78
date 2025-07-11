@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import hexlet.code.schemas.StringSchema;
 import hexlet.code.schemas.NumberSchema;
+import hexlet.code.schemas.MapSchema;
 
 class ValidatorTest {
     private Validator v;
@@ -29,5 +30,13 @@ class ValidatorTest {
 
         assertNotNull(schema);
         assertTrue(schema instanceof NumberSchema);
+    }
+
+    @Test
+    void mapSchemaTest() {
+        var schema = v.map();
+
+        assertNotNull(schema);
+        assertTrue(schema instanceof MapSchema);
     }
 }

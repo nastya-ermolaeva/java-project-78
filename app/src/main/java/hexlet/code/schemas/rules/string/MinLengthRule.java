@@ -6,6 +6,10 @@ public class MinLengthRule implements ValidationRule<String> {
     private int minLength;
 
     public MinLengthRule(int minLength) {
+        if (minLength < 0) {
+            throw new IllegalArgumentException("Minimal length cannot be negative");
+        }
+
         this.minLength = minLength;
     }
 

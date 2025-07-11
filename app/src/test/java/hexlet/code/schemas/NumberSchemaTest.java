@@ -42,7 +42,7 @@ class NumberSchemaTest {
     }
 
     @Test
-    void ramgeRuleTest() {
+    void rangeRuleTest() {
         schema.range(FIVE, TEN);
 
         assertTrue(schema.isValid(null));

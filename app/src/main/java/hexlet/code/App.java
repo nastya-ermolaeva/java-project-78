@@ -1,27 +1,30 @@
 package hexlet.code;
 
+import java.util.HashMap;
+
 public class App {
     public static void main(String[] args) {
         var v = new Validator();
-        var schema = v.number();
+        var schema = v.map();
 
-        System.out.println(schema.isValid(5));
         System.out.println(schema.isValid(null));
-        System.out.println(schema.positive().isValid(null));
 
         schema.required();
 
         System.out.println(schema.isValid(null));
-        System.out.println(schema.isValid(10));
+        System.out.println(schema.isValid(new HashMap<>()));
 
-        System.out.println(schema.isValid(-10));
-        System.out.println(schema.isValid(0));
+        var data = new HashMap<String, String>();
+        data.put("key1", "value1");
 
-        schema.range(5, 10);
+        System.out.println(schema.isValid(data));
 
-        System.out.println(schema.isValid(5));
-        System.out.println(schema.isValid(10));
-        System.out.println(schema.isValid(4));
-        System.out.println(schema.isValid(11));
+        schema.sizeof(2);
+
+        System.out.println(schema.isValid(data));
+
+        data.put("key2", "value2");
+
+        System.out.println(schema.isValid(data));
     }
 }
