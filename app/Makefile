@@ -1,7 +1,7 @@
 .PHONY: build
 
-run-dist:
-	./build/install/app/bin/app
+run-jshell:
+	jshell --class-path build/classes/java/main imports.jsh
 
 build:
 	./gradlew clean build
