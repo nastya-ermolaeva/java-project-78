@@ -4,14 +4,14 @@ import hexlet.code.schemas.rules.ValidationRule;
 import hexlet.code.schemas.BaseSchema;
 import java.util.Map;
 
-public class ShapeRule<K, V> implements ValidationRule<Map<K, V>> {
+public final class ShapeRule<K, V> implements ValidationRule<Map<K, V>> {
     private Map<K, BaseSchema<V>> schemas;
 
-    public ShapeRule(Map<K, BaseSchema<V>> schemas) {
-        if (schemas == null || schemas.isEmpty()) {
+    public ShapeRule(Map<K, BaseSchema<V>> input) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("Schemas for the shape rule must be filled");
         }
-        this.schemas = schemas;
+        this.schemas = input;
     }
 
     public boolean isValid(Map<K, V> data) {

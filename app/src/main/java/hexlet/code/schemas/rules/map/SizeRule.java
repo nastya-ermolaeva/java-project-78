@@ -3,15 +3,15 @@ package hexlet.code.schemas.rules.map;
 import hexlet.code.schemas.rules.ValidationRule;
 import java.util.Map;
 
-public class SizeRule implements ValidationRule<Map<?, ?>> {
+public final class SizeRule implements ValidationRule<Map<?, ?>> {
     private int size;
 
-    public SizeRule(int size) {
-        if (size < 0) {
+    public SizeRule(int input) {
+        if (input < 0) {
             throw new IllegalArgumentException("The map size cannot be negative");
         }
 
-        this.size = size;
+        this.size = input;
     }
 
     public boolean isValid(Map<?, ?> value) {

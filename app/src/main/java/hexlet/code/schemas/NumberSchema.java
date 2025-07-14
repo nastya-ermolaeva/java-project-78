@@ -4,7 +4,7 @@ import hexlet.code.schemas.rules.number.RequiredRule;
 import hexlet.code.schemas.rules.number.PositiveRule;
 import hexlet.code.schemas.rules.number.RangeRule;
 
-public class NumberSchema extends BaseSchema<Integer> {
+public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema required() {
         rules.add(new RequiredRule());

@@ -11,6 +11,16 @@ public abstract class BaseSchema<T> {
         this.rules = new LinkedList<>();
     }
 
+    /**
+     * Validates the input value against all the added validation rules.
+     *
+     * Subclasses may override this method if they need a custom validation strategy.
+     * If overridden, make sure to include all relevant validation logic.
+     *
+     * @param value the value to validate
+     * @return true if the value passes all validation rules, false otherwise
+     */
+
     public boolean isValid(T value) {
 
         for (var rule : rules) {

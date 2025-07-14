@@ -4,7 +4,7 @@ import hexlet.code.schemas.rules.string.RequiredRule;
 import hexlet.code.schemas.rules.string.MinLengthRule;
 import hexlet.code.schemas.rules.string.ContainsRule;
 
-public class StringSchema extends BaseSchema<String> {
+public final class StringSchema extends BaseSchema<String> {
 
     public StringSchema required() {
         rules.add(new RequiredRule());
