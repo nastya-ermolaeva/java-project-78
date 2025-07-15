@@ -9,12 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class NumberSchemaTest {
 
     private NumberSchema schema;
-    private static final int FIVE = 5;
-    private static final int MINUS_FIVE = -5;
-    private static final int TEN = 10;
-    private static final int FOUR = 4;
-    private static final int ELEVEN = 11;
-    private static final int ZERO = 0;
 
     @BeforeEach
     void init() {
@@ -28,7 +22,7 @@ class NumberSchemaTest {
         schema.required();
 
         assertFalse(schema.isValid(null));
-        assertTrue(schema.isValid(ZERO));
+        assertTrue(schema.isValid(0));
     }
 
     @Test
@@ -36,35 +30,35 @@ class NumberSchemaTest {
         schema.positive();
 
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(FIVE));
-        assertFalse(schema.isValid(MINUS_FIVE));
-        assertFalse(schema.isValid(ZERO));
+        assertTrue(schema.isValid(5));
+        assertFalse(schema.isValid(-5));
+        assertFalse(schema.isValid(0));
     }
 
     @Test
     void rangeRuleTest() {
-        schema.range(FIVE, TEN);
+        schema.range(5, 10);
 
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(FIVE));
-        assertTrue(schema.isValid(TEN));
+        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(10));
 
-        assertFalse(schema.isValid(FOUR));
-        assertFalse(schema.isValid(ELEVEN));
-        assertFalse(schema.isValid(MINUS_FIVE));
+        assertFalse(schema.isValid(4));
+        assertFalse(schema.isValid(11));
+        assertFalse(schema.isValid(-5));
 
-        assertThrows(IllegalArgumentException.class, () -> schema.range(TEN, FIVE));
+        assertThrows(IllegalArgumentException.class, () -> schema.range(10, 5));
     }
 
     @Test
     void combinedRulesTest() {
-        schema.required().positive().range(MINUS_FIVE, FIVE);
+        schema.required().positive().range(-5, 5);
 
         assertFalse(schema.isValid(null));
-        assertFalse(schema.isValid(ZERO));
-        assertFalse(schema.isValid(MINUS_FIVE));
-        assertTrue(schema.isValid(FOUR));
-        assertTrue(schema.isValid(FIVE));
-        assertFalse(schema.isValid(TEN));
+        assertFalse(schema.isValid(0));
+        assertFalse(schema.isValid(-5));
+        assertTrue(schema.isValid(4));
+        assertTrue(schema.isValid(5));
+        assertFalse(schema.isValid(10));
     }
 }

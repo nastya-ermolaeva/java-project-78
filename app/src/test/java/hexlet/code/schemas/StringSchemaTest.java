@@ -9,12 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class StringSchemaTest {
 
     private StringSchema schema;
-    private static final String VALUE_1 = "what does the fox say";
-    private static final String VALUE_2 = "hexlet";
-    private static final int TEN = 10;
-    private static final int FOUR = 4;
-    private static final int TWO = 2;
-    private static final int MINUS_FIVE = -5;
 
     @BeforeEach
     void init() {
@@ -30,39 +24,39 @@ class StringSchemaTest {
 
         assertFalse(schema.isValid(""));
         assertFalse(schema.isValid(null));
-        assertTrue(schema.isValid(VALUE_1));
+        assertTrue(schema.isValid("what does the fox say"));
     }
 
     @Test
     void minLengthRuleTest() {
-        schema.minLength(TEN);
+        schema.minLength(10);
 
-        assertTrue(schema.isValid(VALUE_1));
-        assertFalse(schema.isValid(VALUE_2));
+        assertTrue(schema.isValid("what does the fox say"));
+        assertFalse(schema.isValid("hexlet"));
 
-        schema.minLength(FOUR);
+        schema.minLength(4);
 
-        assertTrue(schema.isValid(VALUE_1));
-        assertTrue(schema.isValid(VALUE_2));
+        assertTrue(schema.isValid("what does the fox say"));
+        assertTrue(schema.isValid("hexlet"));
 
-        assertThrows(IllegalArgumentException.class, () -> schema.minLength(MINUS_FIVE));
+        assertThrows(IllegalArgumentException.class, () -> schema.minLength(-5));
     }
 
     @Test
     void containsRuleTest() {
         schema.contains("wh");
-        assertTrue(schema.isValid(VALUE_1));
+        assertTrue(schema.isValid("what does the fox say"));
 
         schema.contains("what");
-        assertTrue(schema.isValid(VALUE_1));
+        assertTrue(schema.isValid("what does the fox say"));
 
         schema.contains("whatthe");
-        assertFalse(schema.isValid(VALUE_1));
+        assertFalse(schema.isValid("what does the fox say"));
     }
 
     @Test
     void combinedRulesTest() {
-        schema.required().minLength(TWO).contains("nu");
+        schema.required().minLength(2).contains("nu");
 
         assertFalse(schema.isValid(null));
         assertTrue(schema.isValid("number"));

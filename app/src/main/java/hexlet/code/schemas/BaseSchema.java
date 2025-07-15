@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.List;
 import java.util.LinkedList;
-import hexlet.code.schemas.rules.ValidationRule;
+import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
     protected List<ValidationRule<T>> rules;
@@ -30,5 +30,9 @@ public abstract class BaseSchema<T> {
         }
 
         return true;
+    }
+
+    protected final void addCheck(String name, Predicate<T> rule) {
+        rules.add(new ValidationRule(name, rule));
     }
 }

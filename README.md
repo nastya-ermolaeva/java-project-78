@@ -8,7 +8,7 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=nastya-ermolaeva_java-project-78&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=nastya-ermolaeva_java-project-78)
 
 # Description
-**Validator** is a tool you can use to check if your data is correct — like strings, numbers, and maps.
+**Validator** is a library you can use to check if your data is correct — like strings, numbers, and maps.
 
 
 For **strings**, you have methods like:
