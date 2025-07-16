@@ -1,5 +1,5 @@
 plugins {
-    application
+    java
     id("com.github.ben-manes.versions") version "0.52.0"
     id("checkstyle")
     id("org.sonarqube") version "6.2.0.5505"
@@ -8,10 +8,6 @@ plugins {
 
 group = "hexlet.code"
 version = "1.0-SNAPSHOT"
-
-application {
-    mainClass.set("jdk.jshell.JShell")
-}
 
 repositories {
     mavenCentral()

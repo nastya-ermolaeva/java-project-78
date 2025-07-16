@@ -6,9 +6,6 @@ run-jshell:
 build:
 	./gradlew clean build
 
-install:
-	./gradlew installDist
-
 test:
 	./gradlew test
 

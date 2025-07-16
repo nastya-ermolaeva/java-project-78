@@ -17,7 +17,6 @@ public final class MapSchema extends BaseSchema<Map<?, ?>> {
             throw new IllegalArgumentException("The map size cannot be negative");
         }
 
-        rules.removeIf(rule -> rule.getName().equals(SIZE_RULE));
         addCheck(SIZE_RULE, value -> value == null || value.size() == size);
         return this;
     }

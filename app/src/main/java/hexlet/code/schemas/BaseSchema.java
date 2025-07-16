@@ -1,14 +1,14 @@
 package hexlet.code.schemas;
 
-import java.util.List;
-import java.util.LinkedList;
+import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
-    protected List<ValidationRule<T>> rules;
+    protected Map<String, Predicate<T>> rules;
 
     public BaseSchema() {
-        this.rules = new LinkedList<>();
+        this.rules = new LinkedHashMap<>();
     }
 
     /**
@@ -23,8 +23,8 @@ public abstract class BaseSchema<T> {
 
     public boolean isValid(T value) {
 
-        for (var rule : rules) {
-            if (!rule.isValid(value)) {
+        for (var rule : rules.values()) {
+            if (!rule.test(value)) {
                 return false;
             }
         }
@@ -33,6 +33,6 @@ public abstract class BaseSchema<T> {
     }
 
     protected final void addCheck(String name, Predicate<T> rule) {
-        rules.add(new ValidationRule(name, rule));
+        rules.put(name, rule);
     }
 }
